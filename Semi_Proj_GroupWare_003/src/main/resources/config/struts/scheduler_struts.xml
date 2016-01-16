@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<!-- tiles 이름 경로 -->
+	<package name="scheduler_struts" namespace="/" extends="default">
+		<!-- 
+			scheduler_add
+			scheduler_list
+		 -->
+		<!-- 
+		<action name="scheduler_add" class="com.user.scheduler.action.SchedulerAddAction">
+			<result type="tiles">scheduler_add</result>
+		</action> 
+		<action name="scheduler_list">
+			<result type="tiles">scheduler_list</result>
+		</action>
+		 <action name="scheduler_insert" class="com.user.scheduler.action.ScheduleInputAction">
+			<result type="redirectAction">
+				<param name="actionName">
+					scheduler_list
+				</param>
+			</result>
+		</action> 
+		
+		<action name="event_controll" class="com.user.scheduler.action.Sched_EventAction"></action>
+		
+		<action name="event_delete" class="com.user.scheduler.action.Sched_DelAction"></action>
+		
+		<action name="event_chk" class="com.user.scheduler.action.Sched_CheckAction"></action> -->
+		
+	</package>
+</struts>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<!-- tiles 이름 경로 -->
+	<package name="admin" namespace="/" extends="default">
+		<action name="admin">
+			<result type="tiles">admin</result>
+		</action>
+		
+		
+		
+		
+		<action name="admin-*">
+			<!-- 타일즈 설정값으로 된 definition name="*"과 맵핑 -->
+			<result type="tiles">admin-{1}</result>
+		</action>
+	</package>
+</struts>

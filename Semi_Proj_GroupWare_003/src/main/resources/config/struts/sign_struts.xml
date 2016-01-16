@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<package name="sign" namespace="/" extends="default">
+	
+		<!-- 로그인시 성공하면 USER 페이지로 이동함, 에러가 날시 다시 index.jsp로 분기함 -->
+		<action name="login" class="com.common.sign.aciton.LogIn_Action">
+			<result type="redirectAction" name="success">
+				<param name="actionName">user</param>
+			</result>
+			<result name="error">index.jsp</result>
+		</action>
+		
+		<!-- profile 화면으로 분기하면서 사용자의 정보를 result로 보내줌 -->
+		<action name="profile" class="com.common.sign.aciton.Profile_Select_Action">
+			<result type="tiles">profile</result>
+		</action>
+		
+		<!-- profile 화면에서 수정 버튼을 누룬후에 다시 USER 페이지로 분기함 -->
+		<action name="profile_update" class="com.common.sign.aciton.Profile_Update_Action"> 
+			<result type="tiles">user</result>
+		</action>
+		
+		<!-- signup 페이지로 분기 -->
+		<action name="signup">
+			<result>/tiles/view/common/sign/signup.jsp</result>
+		</action>
+		
+		<!-- idchk -->
+		<action name="idchk" class="com.common.sign.aciton.Id_chk_Action"></action>
+		
+		<!-- signup 페이지에서 회원 등록 후  index 페이지로 분기 -->
+		<action name="signup_insert" class="com.common.sign.aciton.Signup_Insert_Action">
+			<result>index.jsp</result>
+		</action>
+		
+		<!-- LOGOUT시 LOGOUT 페이지로 분기 -->
+		<action name="logout" class="com.common.sign.aciton.LogOut_Action" >
+			<result>/tiles/view/common/logout/logout.jsp</result>
+		</action>
+	</package>
+</struts>

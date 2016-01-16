@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scheduler" >
+ 	<insert id="insertsc" parameterType="scvo">
+ 		insert into Schedule values(
+ 		Schedule_seq.nextVal,#{mem_code},#{sched_someday},#{sched_somedayend},#{sched_evnet},0
+ 		)
+ 	</insert>
+ 	
+ 	<select id="getAllsc" resultType="java.util.HashMap" parameterType="String">
+ 		select sched_evnet,sched_check,sched_someday,sched_somedayend,sched_num from Schedule where mem_code=#{mem_code}
+ 	</select>
+   
+   <select id="getDaysc" resultType="scvo" parameterType="java.util.HashMap">
+   		select sched_evnet,sched_check,sched_num from Schedule where sched_someday=#{date} and sched_somedayend=#{edate} and mem_code=#{mem_code}
+   </select>
+   
+   <delete id="deletesc" parameterType="java.util.HashMap">
+   		delete from Schedule where sched_num=#{sched_num} 
+   </delete>
+   
+   <update id="updatesc" parameterType="int">
+   		update Schedule set sched_check='1' where sched_num=#{sched_num} 
+   </update>
+   
+</mapper>

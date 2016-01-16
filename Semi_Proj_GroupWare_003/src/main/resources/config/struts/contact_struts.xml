@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<!-- tiles 이름 경로 -->
+	<package name="contact_struts" namespace="/" extends="default">
+		<!-- 
+		 company_add
+		 contact_add
+		 contact_list
+		 -->
+		<!-- 주소록 리스트  -->
+		<action name="contact_list" class="com.user.contact.action.Contact_Action">
+			<result type="tiles">contact_list</result>
+		</action>
+		 <!-- 주소록 등록  -->
+		<action name="contact_add">
+			<result type="tiles">contact_add</result>
+		</action>
+		
+		<action name="contact_detail" class="com.user.contact.action.Contact_Detail_Action">
+			<result type="tiles">contact_detail</result>
+		</action>
+		
+		<!-- 회사등록 (모달로 구현) 
+		<action name="company_add">
+			<result type="tiles">company_add</result>
+		</action>
+		-->
+		
+		<!-- 회사 검색해서 리스트 가져옴 ajax로 구현완료!  -->
+		<action name="searchComp" class="com.user.contact.action.Company_Ajax_Action"></action>
+		
+		<!-- 주소록 폼에 입력한 값 전달 하고 리스트로 이동  -->
+		<action name="contact_insert" class="com.user.contact.action.Contact_Insert_Action">
+			<result type="redirectAction">
+				<param name="actionName">contact_list</param>
+			</result>
+		</action>
+		
+		<!-- 주소록 폼에 입력한 값 전달 하고 리스트로 이동  -->
+		<action name="company_update" class="com.user.contact.action.Contact_Update_Action">
+			<result type="redirectAction">
+				<param name="actionName">contact_detail</param>
+				<param name="cont_num">${cont_num}</param>
+			</result>
+		</action>
+		
+		
+	
+		<!-- 회사 등록 폼에 입력한 값 전달 하고 리스트로 이동  -->
+		<action name="company_insert" class="com.user.contact.action.Company_Insert_Action">
+			<result type="redirectAction">
+				<param name="actionName">contact_list</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

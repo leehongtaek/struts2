@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<!-- tiles 이름 경로 -->
+	<package name="board_L_struts" namespace="/" extends="default">
+		<!--타일즈 view name board_L_detail board_L_list board_L_modify -->
+
+		<action name="board_L_list" class="com.user.board_L.action.ListAction">
+			<result type="tiles" name="success">board_L_list</result>
+		</action>
+
+		<action name="board_L_detail" class="com.user.board_L.action.ViewAction">
+			<result type="tiles">board_L_detail</result>
+		</action>
+
+		<action name="board_L_write">
+			<result type="tiles">board_L_write</result>
+		</action>
+
+		<action name="insert" class="com.user.board_L.action.InsertAction">
+			<result type="redirectAction">
+				<param name="actionName">board_L_list</param>
+			</result>
+		</action>
+
+		<action name="board_L_modify" class="com.user.board_L.action.BoardModify_Action">
+			<result type="tiles" name="updateform">board_L_modify</result>
+			<result type="redirectAction" name="success">
+				<param name="actionName">board_L_list</param>
+			</result>
+		</action>
+
+
+
+	</package>
+</struts>

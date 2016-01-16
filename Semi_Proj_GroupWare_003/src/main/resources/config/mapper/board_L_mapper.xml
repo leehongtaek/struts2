@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board_L">
+	<select id="list" resultType="bvo" parameterType="bvo">
+		select * from BOARD
+		<if test="searchType != null">
+			<where>
+				<choose>
+					<when test="searchType == 1">
+						board_title like '%'|| #{ searchValue} || '%'
+					</when>
+					<when test="searchType == 2">
+						board_content like '%'|| #{ searchValue} || '%'
+					</when>
+					<otherwise></otherwise>
+				</choose>
+			</where>
+		</if>
+		order by 1 desc
+	</select>
+	
+	
+	<select id="searchcnt" resultType="int" parameterType="bvo">
+		select count(*) from BOARD
+		<if test="searchType != null">
+			<where>
+				<choose>
+					<when test="searchType == 1">
+						board_title like '%'|| #{ searchValue} || '%'
+					</when>
+					<when test="searchType == 2">
+						board_content like '%'|| #{ searchValue} || '%'
+					</when>
+					<otherwise></otherwise>
+				</choose>
+			</where>
+		</if>
+		order by 1 desc
+	</select>
+	
+	<sql id="search_sql">
+		select * from BOARD
+		<if test="searchType != null">
+			<where>
+				<choose>
+					<when test="searchType == 1">
+						board_title like '%'|| #{ searchValue} || '%'
+					</when>
+					<when test="searchType == 2">
+						board_content like '%'|| #{ searchValue} || '%'
+					</when>
+					<otherwise></otherwise>
+				</choose>
+			</where>
+		</if>
+		order by board_regdate desc
+	</sql>
+	<select id="search_paging_list" resultType="bvo" parameterType="java.util.HashMap">
+		select * from (select rownum as rnum, Z.*
+		from(<include refid="search_sql"/>) Z
+	<![CDATA[
+		where rownum <=#{record_end_no})
+		where rnum >=#{record_Start_no}
+	]]>
+	</select>
+	
+	
+
+	<select id="view_board" resultType="bvo" parameterType="int">
+		select *
+		from BOARD where board_num=#{board_num}
+	</select>
+
+	<insert id="in_board" parameterType="bvo">
+		insert into
+		BOARD(board_num,board_title,board_content,board_regdate)
+		values(board_seq.nextVal,#{board_title},#{board_content},sysdate)
+	</insert>
+
+	<delete id="del_board" parameterType="int">
+		delete from BOARD where
+		board_num=#{board_num}
+	</delete>
+
+	<update id="up_board" parameterType="bvo">
+		update BOARD set
+		board_title= #{board_title},
+		board_content= #{board_content}
+		where
+		board_num= #{board_num}
+	</update>
+
+	<select id="total" resultType="int">
+	select count(*) from BOARD
+	</select>
+
+	<select id="paging" resultType="bvo" parameterType="java.util.HashMap">
+	<![CDATA[
+		select * from (select rownum as rnum, Z.*
+		from(select * from board order by board_regdate desc) Z
+		where rownum <=#{record_end_no})
+		where rnum >=#{record_Start_no}
+		]]>
+	</select>
+</mapper>

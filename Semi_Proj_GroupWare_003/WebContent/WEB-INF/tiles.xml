@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+  	<!-- user 기본 템플릿  -->
+    <definition name="user" template="/tiles/view/user/layout/layout.jsp">
+        <put-attribute name="menu"   value="/tiles/view/user/layout/menu.jsp"/>
+        <put-attribute name="header" value="/tiles/view/user/layout/header.jsp"/>
+        <put-attribute name="body"   value="/tiles/view/user/layout/body.jsp"/>
+        <put-attribute name="footer" value="/tiles/view/user/layout/footer.jsp"/>
+    </definition>
+    
+    <definition name="user-menu1" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/menu/menu1.jsp"/>
+    </definition>
+	
+	<definition name="user-menu2" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/menu/menu2.jsp"/>
+    </definition>
+    
+    
+    <!-- Board_L_list View -->
+	<definition name="board_L_list" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_L/board_L_list.jsp"/>
+    </definition>
+	<definition name="board_L_modify" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_L/board_L_modify.jsp"/>
+    </definition>
+	<definition name="board_L_detail" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_L/board_L_detail.jsp"/>
+    </definition>
+    <definition name="board_L_write" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_L/board_L_write.jsp"/>
+    </definition>
+    
+	
+    <!-- Board_P_list View -->
+	<definition name="board_P_list" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_P/board_P_list.jsp"/>
+    </definition>
+	<definition name="board_P_modify" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_P/board_P_modify.jsp"/>
+    </definition>
+	<definition name="board_P_detail" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_P/board_P_detail.jsp"/>
+    </definition>
+    <definition name="board_P_write" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/board_P/board_P_write.jsp"/>
+    </definition>
+    
+    
+	<!-- contract View -->
+	<!-- 주소록 리스트  -->
+	<definition name="contact_list" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/contact/contact_list.jsp"/>
+    </definition>
+    <!-- 주소록 등록  -->
+	<definition name="contact_add" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/contact/contact_add.jsp"/>
+    </definition>
+    
+   <definition name="contact_detail" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/contact/contact_detail.jsp"/>
+   </definition>
+	
+	 <!-- 회사등록 (모달로 구현) 
+	<definition name="company_add" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/contact/company_add.jsp"/>
+    </definition>
+    -->
+	
+	<!-- report View -->
+	<definition name="report_add" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/report/report_add.jsp"/>
+    </definition>
+	<definition name="report_detail" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/report/report_detail.jsp"/>
+    </definition>
+	<definition name="report_list" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/report/report_list.jsp"/>
+    </definition>
+    
+	
+	
+   <!-- room_rent View -->
+	<definition name="room_rent_add" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/room_rent/room_rent_add.jsp"/>
+    </definition>
+	<definition name="room_rent_detail" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/room_rent/room_rent_detail.jsp"/>
+    </definition>
+	<definition name="room_rent_list" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/room_rent/room_rent_list.jsp"/>
+    </definition>
+    
+   
+   <!-- scheduler View -->
+	<definition name="scheduler_add" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/scheduler/scheduler_add.jsp"/>
+    </definition>
+	<definition name="scheduler_list" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/scheduler/scheduler_list.jsp"/>
+    </definition>
+	
+	<!-- timecard View -->
+    <definition name="timecard_list" extends="user">
+        <put-attribute name="body"   value="/tiles/view/user/timecard/timecard_list.jsp"/>
+    </definition>
+   
+   <!-- Profile View -->
+    <definition name="profile" extends="user">
+        <put-attribute name="body"   value="/tiles/view/common/mypage/profile.jsp"/>
+    </definition>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    <!-- admin 기본 템플릿 -->
+    <definition name="admin" template="/tiles/view/admin/layout/layout.jsp">
+        <put-attribute name="header" value="/tiles/view/admin/layout/header.jsp"/>
+        <put-attribute name="menu"   value="/tiles/view/admin/layout/menu.jsp"/>
+        <put-attribute name="body"   value="/tiles/view/admin/layout/body.jsp"/>
+        <put-attribute name="footer" value="/tiles/view/admin/layout/footer.jsp"/>
+    </definition>
+
+    
+    
+    <!-- admin-menu1[모듈 1-1]  -->
+    <definition name="admin-menu1" extends="admin">
+        <put-attribute name="body"   value="/tiles/view/admin/menu/menu1.jsp"/>
+    </definition>
+    
+    <!-- admin-menu2  -->
+    
+    <definition name="admin-menu2" extends="admin">
+        <put-attribute name="body"   value="/tiles/view/admin/menu/menu2.jsp"/>
+    </definition>
+    
+    <!-- admin-menu3  -->
+    <definition name="admin-menu3" extends="admin">
+        <put-attribute name="body"   value="/tiles/view/admin/menu/menu3.jsp"/>
+    </definition>
+    
+    <!-- admin-menu4  -->
+    <definition name="admin-menu4" extends="admin">
+        <put-attribute name="body"   value="/tiles/view/admin/menu/menu4.jsp"/>
+    </definition>
+	
+    <!-- admin-menu5  -->
+    <definition name="admin-menu5" extends="admin">
+        <put-attribute name="body"   value="/tiles/view/admin/menu/menu5.jsp"/>  
+    </definition>
+    
+    <!-- admin-menu8  -->
+    <definition name="admin-menu8" extends="admin">
+        <put-attribute name="body"   value="/tiles/view/admin/menu/menu8.jsp"/>  
+    </definition>
+    
+    
+	
+	
+	
+
+
+		
+</tiles-definitions>

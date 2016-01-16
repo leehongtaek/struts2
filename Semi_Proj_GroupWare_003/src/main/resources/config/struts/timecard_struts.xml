@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<package name="timecard_struts" namespace="/" extends="default">
+		
+		<!-- timecard_list 페이지로 이동 -->
+		<action name="timecard_list" class="com.user.timecard.action.TimeCardList_Action">
+			<result type="tiles">timecard_list</result>
+		</action>
+		
+		<!-- 모든 TIMECARD UPDATE는 비동기식 처리  -->
+		<action name="timecard_update" class="com.user.timecard.action.TimeCardUpdate_Action"></action>
+		
+	
+	</package>
+</struts>

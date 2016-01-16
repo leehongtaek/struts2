@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- 2015.10.20 create by 유현주 -->
+
+<mapper namespace="room_Rent" >
+	<insert id="room_Insert" parameterType="rovo">
+		insert into Room values(Room_seq.nextVal, #{room_name}, #{room_loc}, #{room_limit})
+	</insert>
+ 	<insert id="rent_Insert" parameterType="revo">
+ 		insert into Rent values(Rent_seq.nextVal, #{rent_reason}, #{rent_start}, #{rent_end},
+ 		#{room_num}, #{mem_code})
+ 	</insert>
+ 	<select id="room_List" resultType="rovo">
+ 		select room_num, room_name, room_loc, room_limit from Room
+ 	</select>
+ 	<select id="rent_List" resultType="revo">
+ 		select rent_num, rent_reason, rent_start, rent_end, room_num, mem_code from Rent
+ 	</select>
+ 	<select id="room_Detail" resultType="rovo" parameterType="int">
+ 		select room_num, room_name, room_loc, room_limit from Room
+ 		where room_num = #{room_num}
+ 	</select>
+ 	<select id="rent_Detail" resultType="revo" parameterType="String">
+ 		select re.rent_num, re.rent_reason, re.rent_start, re.rent_end, ro.room_name, mem.mem_name
+		from Rent re, Room ro, Member mem where re.rent_start like #{rent_start} || '%'
+		and re.mem_code = mem.mem_code and re.room_num = ro.room_num
+ 	</select>
+</mapper>

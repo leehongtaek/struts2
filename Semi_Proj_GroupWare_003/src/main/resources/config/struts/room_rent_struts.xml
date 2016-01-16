@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<!-- tiles 이름 경로 -->
+	<package name="room_rent_struts" namespace="/" extends="default">
+		<!-- 
+			room_rent_add
+			room_rent_detail
+			room_rent_list		
+		 -->
+		<action name="room_Insert" class="com.user.room_rent.action.Room_Add_Action">
+			<result type="redirectAction">
+				<param name="actionName">room_rent_list</param>
+			</result>
+		</action>
+		<action name="rent_Insert" class="com.user.room_rent.action.Rent_Add_Action">
+			<result type="redirectAction">
+				<param name="actionName">room_rent_list</param>
+			</result>
+		</action>
+		<action name="room_name" class="com.user.room_rent.action.Room_Name_Action">
+		</action>
+		
+		<action name="rent_list" class="com.user.room_rent.action.Rent_List_Action">
+		</action>
+		
+		<action name="room_rent_list" class="com.user.room_rent.action.Room_List_Action">
+			<result type="tiles">room_rent_list</result>
+		</action>
+		
+		<action name="room_rent_detail" class="com.user.room_rent.action.Rent_Detail_Action">
+			<result type="tiles">room_rent_detail</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- struts.i18n.encoding=UTF-8 언어 지원 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	 <constant name="struts.enable.SlashesInActionNames" value="true" />
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+	<!-- namespace 경로 /액션의이름:name URL= /actionname -->
+	<package name="default" namespace="/" extends="struts-default,tiles-default">
+		<!-- documentRoot 경로를 index로 요청하라는 뜻 -->
+		<default-action-ref name="index"></default-action-ref>
+		
+		<!-- 공통적으로 사용하는 모듈만 넣어둠  -->
+		<action name="index">
+			 <result>/index.jsp</result>
+		</action>
+
+	</package>
+	<!-- 모듈 struts file include -->
+	<include file="config/struts/scheduler_struts.xml"></include>
+	<include file="config/struts/contact_struts.xml"></include>
+	<include file="config/struts/timecard_struts.xml"></include>
+	<include file="config/struts/board_L_struts.xml"></include>
+	<include file="config/struts/board_P_struts.xml"></include>
+	<include file="config/struts/room_rent_struts.xml"></include>
+	<include file="config/struts/report_struts.xml"></include>
+	<!-- src/resources 위치한 파일들 -->
+	<include file="config/struts/admin_struts.xml"></include>
+	<include file="config/struts/user_struts.xml"></include>
+	<include file="config/struts/sign_struts.xml"></include>	
+	
+</struts>

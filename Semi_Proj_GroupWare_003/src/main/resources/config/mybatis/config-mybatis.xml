@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!-- log4j2 연동 설정 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J2"/>
+	</settings>
+	
+	<!-- Vo 등록  -->
+	 <typeAliases>
+	 	<typeAlias type="com.common.sign.vo.Member_Vo" alias="membervo"/>
+	 	<typeAlias type="com.user.timecard.vo.Timecard_Vo" alias="timecardvo"/>
+		<typeAlias type="com.user.room_rent.vo.Rent_Vo" alias="revo"/>
+		<typeAlias type="com.user.room_rent.vo.Room_Vo" alias="rovo"/>
+		<typeAlias type="com.user.contact.vo.Contact_Vo" alias="contactvo"/>
+		<typeAlias type="com.user.contact.vo.Company_Vo" alias="companyvo"/>
+		<typeAlias type="com.user.scheduler.vo.ScheduleVO" alias="scvo"/>
+		<typeAlias type="com.user.board_L.vo.Board_Vo" alias="bvo"/>
+		<typeAlias type="com.user.board_P.vo.Board_Vo" alias="pbvo"/>
+	</typeAliases>
+	
+	
+	<!-- JNDI 방식으로 연결하는 방법  -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+				<property name="data_source" value="java:/comp/env/jdbc/myora" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- mappers files들을   여러개로 나누어서 사용할수 있다. -->
+	<!-- mapper 파일명 - [모듈이름]_mapper.xml -->
+	<mappers>
+		<mapper resource="config/mapper/board_L_mapper.xml" />
+		<mapper resource="config/mapper/board_P_mapper.xml" />
+		<mapper resource="config/mapper/contact_mapper.xml" />
+		<mapper resource="config/mapper/report_mapper.xml" />
+		<mapper resource="config/mapper/room_rent_mapper.xml" />
+		<mapper resource="config/mapper/scheduler_mapper.xml" />
+		<mapper resource="config/mapper/timecard_mapper.xml" />
+		<mapper resource="config/mapper/common_sign_mapper.xml" />
+	</mappers>
+	
+</configuration>

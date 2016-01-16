@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--  Member 총 15개의 컬럼
+CREATE TABLE Member (
+	mem_code VARCHAR2(50) CONSTRAINT Member_code_pk PRIMARY KEY, /* 사번 
+	mem_role NUMBER NOT NULL,  권한 
+	mem_id VARCHAR2(30) NOT NULL,  아이디 
+	mem_pwd VARCHAR2(30) NOT NULL,  패스워드 
+	mem_name VARCHAR2(30) NOT NULL,  이름 
+	mem_birthdate DATE NOT NULL,  생년월일 
+	mem_tel VARCHAR2(20),  전화번호 
+	mem_email VARCHAR2(30),  이메일 
+	mem_hiredate DATE NOT NULL,  입사일 
+	dept_num NUMBER,  부서번호 
+	position_num NUMBER NOT NULL,  직급번호 
+	mem_post CHAR(7),  우편번호 
+	mem_roadaddr VARCHAR2(300),  도로명 
+	mem_jibunaddr VARCHAR2(300),  지번 
+	mem_detailaddr VARCHAR2(300), 상세주소 
+  CONSTRAINT FK_MemDept_TO_Member FOREIGN KEY(dept_num) references MemDept(dept_num)  
+); -->
+<mapper namespace="sign" >
+ 	<insert id="insert">
+ 		insert into MEMBER (MEM_CODE,MEM_ROLE,MEM_ID,MEM_PWD,MEM_NAME,
+ 		MEM_BIRTHDATE,MEM_TEL,MEM_EMAIL,MEM_HIREDATE,DEPT_NUM,
+ 		POSITION_NUM,MEM_POST,MEM_ROADADDR,MEM_JIBUNADDR,MEM_DETAILADDR) 
+ 		values (#{mem_code},#{mem_role},#{mem_id},#{mem_pwd},#{mem_name},
+ 		#{mem_birthdate},#{mem_tel},#{mem_email},#{mem_hiredate},#{dept_num},
+ 		#{position_num},#{mem_post},#{mem_roadaddr},#{mem_jibunaddr},#{mem_detailaddr})
+ 	</insert>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+</mapper>

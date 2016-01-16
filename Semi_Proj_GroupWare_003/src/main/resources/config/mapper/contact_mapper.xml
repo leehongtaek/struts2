@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="contact" >
+
+	<select id="paging" resultType="contactvo" parameterType="java.util.HashMap">
+	<![CDATA[
+		select * from (select rownum as rnum, Z.*
+		from(select * from Contact cont inner join Company comp on cont.comp_num = comp.comp_num order by cont_num desc) Z
+		where rownum <=#{record_end_no})
+		where rnum >=#{record_Start_no}
+		]]>
+	</select>
+	
+	<select id="detail_List" resultType="contactvo" parameterType="int">
+		select * from Contact cont, Company comp, ExtDept dept
+		where cont.comp_num = comp.comp_num
+		and cont.dept_num = dept.dept_num
+		and cont.cont_num = #{cont_num}
+	</select>
+	
+	
+	<select id="total" resultType="int">
+	select count(*) from Contact
+	</select>
+
+ 	<select id="all_List" resultType="contactvo">
+ 		select cont_num, comp_num, dept_num, cont_name, 
+ 		cont_tel, cont_email, cont_regdate, cont_etc, position_num from Contact
+ 	</select>
+ 	
+ 	<select id="companySearch_List" resultType="companyvo" parameterType="companyvo" >
+ 			select * from Company
+ 			<if test="searchType != null">
+ 				<where>
+ 					<choose>
+ 						<when test="searchType == 1">
+ 							comp_name like '%'|| #{ searchValue} || '%'
+ 						</when>
+ 						<when test="searchType == 2">
+ 							comp_jibunaddr like '%'|| #{ searchValue} || '%'
+ 						</when>
+ 						<when test="searchType == 3">
+ 							comp_tel like '%'|| #{ searchValue} || '%'
+ 						</when>
+ 						<when test="searchType == 4">
+ 							comp_home like '%'|| #{ searchValue} || '%'
+ 						</when>
+ 						<otherwise></otherwise>
+ 					</choose>
+ 				</where>
+ 			</if>
+ 			order by 1 desc
+ 		</select>	
+   
+   
+   <insert id="contact_Insert" parameterType="contactvo" >
+   		insert into Contact values(Contact_seq.nextVal, #{comp_num},
+   		#{dept_num}, #{position_num}, #{cont_regdate}, #{cont_name},
+   		#{cont_tel}, #{cont_email}, #{cont_roadaddr}, #{cont_jibunaddr},
+   		#{cont_post}, #{cont_detailaddr}, #{cont_etc})
+   </insert>
+   
+   <insert id="company_Insert" parameterType="companyvo" >
+   		insert into Company values(Company_seq.nextVal, #{comp_name},
+   		#{comp_post}, #{comp_roadaddr}, #{comp_jibunaddr}, #{comp_detailaddr},
+   		#{comp_tel}, #{comp_home})
+   </insert>
+   
+   <update id="contact_Update" parameterType="companyvo">
+   		UPDATE Company
+  		SET comp_name = #{comp_name},
+   		comp_jibunaddr = #{comp_jibunaddr},
+   		comp_roadaddr = #{comp_roadaddr},
+   		comp_detailaddr= #{comp_detailaddr},
+   		comp_tel=#{comp_tel},
+   		comp_home=#{comp_home}
+   		where comp_num=#{comp_num}
+   </update>
+   
+   
+   
+   
+</mapper>
