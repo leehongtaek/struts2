@@ -1,6 +1,6 @@
-/**
+﻿/**
 * 작업 날짜 : 2015. 10. 20.
-* 구현 내용 : Login_Actiond에서 로그인 후 , Session에 사용자의 정보를 저장함
+* 구현       내용 : Login_Actiond에서 로그인 후 , Session에 사용자의 정보를 저장함
 *  
 * @author By Byeong Gi Kim 
 */
